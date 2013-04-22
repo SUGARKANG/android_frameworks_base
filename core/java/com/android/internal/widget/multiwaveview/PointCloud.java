@@ -18,12 +18,23 @@ package com.android.internal.widget.multiwaveview;
 
 import java.util.ArrayList;
 
+import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.database.ContentObserver;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.provider.Settings;
 import android.util.FloatMath;
 import android.util.Log;
+import android.app.Dialog;
 
 public class PointCloud {
     private static final float MIN_POINT_SIZE = 2.0f;
@@ -37,6 +48,9 @@ public class PointCloud {
     private Paint mPaint;
     private float mScale = 1.0f;
     private static final float PI = (float) Math.PI;
+
+    private int mEffectColor;
+    public Context mContext;
 
     // These allow us to have multiple concurrent animations.
     WaveManager waveManager = new WaveManager();
@@ -118,7 +132,7 @@ public class PointCloud {
     public PointCloud(Drawable drawable) {
         mPaint = new Paint();
         mPaint.setFilterBitmap(true);
-        mPaint.setColor(Color.rgb(255, 255, 255)); // TODO: make configurable
+        mPaint.setColor(updateColor()); // TODO: make configurable
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
 
@@ -230,6 +244,35 @@ public class PointCloud {
             }
         }
         canvas.restore();
+    }
+    class SettingsObserver extends ContentObserver {
+        private Context Context;
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() { 
+           
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+					Settings.System.LOCKSCREEN_COLOR_EFFECT), false, this);
+        }
+        public void onChange(boolean selfChange) {
+            updateColor();
+        }
+    }
+
+    public int updateColor(){
+        ContentResolver resolver = mContext.getContentResolver();
+        int mNewEffectColor = 0;
+
+        mNewEffectColor = Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_COLOR_EFFECT, mEffectColor);
+
+        if (mNewEffectColor < 0 && mNewEffectColor != mEffectColor) {
+            mEffectColor = mNewEffectColor;
+        }
+    return mEffectColor;
     }
 
 }

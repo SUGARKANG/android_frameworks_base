@@ -1295,6 +1295,16 @@
     <string name="permdesc_vibrate">Allows the app to control the vibrator.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_fm_radio_receiver">control FM receiver</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_fm_radio_receiver">Allows the application to control the FM receiver.</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_fm_radio_transmitter">control FM transmitter</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_fm_radio_transmitter">Allows the application to control the FM transmitter.</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_flashlight">control flashlight</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permdesc_flashlight">Allows the app to control the flashlight.</string>
@@ -3777,6 +3787,12 @@
     <string name="symbol_picker_equal">\u2260\u2248\u221e</string>
     <string name="symbol_picker_lt">\u2264\u00ab\u2039</string>
     <string name="symbol_picker_gt">\u2265\u00bb\u203a</string>
+
+    <!-- Color picker dialog strings -->
+    <string name="color_picker">Color picker</string>
+    <string name="color_picker_hint">Press on color to apply</string>
+    <string name="color_picker_hex">Hex:</string>
+    <string name="color_picker_arrow_right" translatable="false">→</string>
 
     <!-- Hardware Rotation lock string -->
     <string name="toast_rotation_unlocked">Display Rotation Unlocked</string>

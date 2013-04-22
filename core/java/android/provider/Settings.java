@@ -2714,6 +2714,18 @@ public final class Settings {
          * @hide
          */
         public static final String ENABLE_STYLUS_GESTURES = "enable_stylus_gestures";
+        
+        /**
+         * custom statusbar clock color
+        * @hide
+        */
+        public static final String LOCKSCREEN_COLOR_EFFECT = "lockscreen_effect_color";
+        /**
+         * Holds the text for the Carrier Label. An empty string will bring
+         * the default text back.
+         * @hide
+         */
+        public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
         /**
          * Left Swipe Action
@@ -2792,6 +2804,13 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
+        
+
+        /**
+         * custom lockscreen text color
+         * @hide
+         */
+        public static final String LOCKSCREEN_TEXT_COLOR = "lockscreen_text_color";
 
         /**
          * Whether System profiles are enabled
